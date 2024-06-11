@@ -1,7 +1,6 @@
 package com.example.demo1;
 
 public class Client {
-    private int id;
     private String name;
     private String series_pass;
     private String num_pass;
@@ -10,20 +9,13 @@ public class Client {
     private String login;
     private String password;
 
-    public Client(int id, String name, String series_pass, String num_pass, String adress){
-        this.id = id;
+    public Client(String name, String series_pass, String num_pass, String adress, String login, String password){
         this.name = name;
         this.series_pass = series_pass;
         this.num_pass = num_pass;
         this.adress = adress;
-    }
-
-    public int getId(){
-        return id;
-    }
-
-    public void setId(){
-        this.id = id;
+        this.login = login;
+        this.password = password;
     }
 
     public String getName(){

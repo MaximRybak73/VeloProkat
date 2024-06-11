@@ -38,18 +38,34 @@ public class SignUpController {
 
     @FXML
     void initialize() {
-        DataBase db = new DataBase();
         sugnUpButton.setOnAction(event -> {
-            try {
-                db.writeClientInDB(nameField.getText(), seriesPassField.getText(), numPassField.getText(), adressField.getText(), loginField.getText(), passwordField.getText());
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+
+            signUpNewUser();
+
         });
 
 
+    }
+
+    private void signUpNewUser() {
+        DataBase db = new DataBase();
+
+        String name = nameField.getText();
+        String series_pass = seriesPassField.getText();
+        String num_pass = numPassField.getText();
+        String adress = adressField.getText();
+        String login = loginField.getText();
+        String password = passwordField.getText();
+
+        Client client = new Client(name, series_pass, num_pass, adress, login, password);
+
+        try {
+            db.writeClientInDB(client);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

@@ -13,16 +13,16 @@ public class DataBase extends Configs {
         return  dbConnection;
     }
 
-    public void writeClientInDB(String name, String series_pass, String num_pass, String adress, String login, String password) throws SQLException, ClassNotFoundException {
+    public void writeClientInDB(Client client) throws SQLException, ClassNotFoundException { //Добавление клиента в базу данных
         String insert = "INSERT INTO " + Constants.CLIENTS_TABLE + "(" + Constants.CLIENT_NAME + "," + Constants.CLIENT_SER_PASS + "," + Constants.CLIENT_NUM_PASS + ","
                 + Constants.CLIENT_ADRESS+ "," + Constants.CLIENT_LOGIN + "," + Constants.CLIENT_PASSWORD + ")" + "VALUES(?, ?, ?, ?, ?, ?)";
         PreparedStatement st = getDbConnection().prepareStatement(insert);
-        st.setString(1, name);
-        st.setString(2, series_pass);
-        st.setString(3, num_pass);
-        st.setString(4, adress);
-        st.setString(5, login);
-        st.setString(6, password);
+        st.setString(1, client.getName());
+        st.setString(2, client.getSeries_pass());
+        st.setString(3, client.getNum_pass());
+        st.setString(4, client.getAdress());
+        st.setString(5, client.getLogin());
+        st.setString(6, client.getPassword());
 
 
         st.executeUpdate(); //выполнить команду
