@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.AppController">
+    <children>
+        <AnchorPane layoutY="94.0" prefHeight="306.0" prefWidth="700.0" style="-fx-background-color: #fafafa;">
+            <children>
+                <TextField fx:id="loginField" layoutX="199.0" layoutY="93.0" prefHeight="25.0" prefWidth="303.0" promptText=" Логин" />
+                <TextField fx:id="PasswordField" layoutX="199.0" layoutY="153.0" prefHeight="25.0" prefWidth="303.0" promptText="Пароль" />
+                <Button fx:id="enterButton" layoutX="305.0" layoutY="209.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="90.0" text="Войти">
+                    <font>
+                        <Font name="Century Gothic Bold" size="15.0" />
+                    </font>
+                    <textFill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.0036549707874655724" green="0.37037035822868347" blue="0.7894737124443054" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </RadialGradient>
+                    </textFill>
+                </Button>
+                <Text layoutX="284.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Авторизация">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+        <Label layoutX="207.0" layoutY="27.0" text="VeloProkat73" textFill="WHITE">
+            <font>
+                <Font name="Bauhaus 93" size="48.0" />
+            </font>
+        </Label>
+        <Button fx:id="registrationButton" layoutX="564.0" layoutY="38.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="122.0" text="Регистрация">
+            <font>
+                <Font name="Century Gothic Bold" size="15.0" />
+            </font>
+            <textFill>
+                <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.0036549707874655724" green="0.37037035822868347" blue="0.7894737124443054" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </RadialGradient>
+            </textFill>
+        </Button>
+    </children>
+</AnchorPane>
