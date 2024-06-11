@@ -2,6 +2,8 @@ package com.example.demo1;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -32,29 +34,25 @@ public class AuthorizationController {
     @FXML
     private Button registrationButton;
 
-    private void loginUser(String login, String password){
-
-    }
-
     @FXML
     void initialize() {
         enterButton.setOnAction(event -> {
             String login = loginField.getText().trim();
             String password = PasswordField.getText().trim();
 
-            if(!login.equals("") && !password.equals("")){
-//                loginUser(login, password) {
-//                }
+            if (!login.equals("") && !password.equals("")) {
+                try {
+                    loginClient(login, password);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
             }
             else {
                 System.out.println("Login/password is empty");
             }
         });
-
-
-
-
-
 
         registrationButton.setOnAction(event -> {
             registrationButton.getScene().getWindow().hide();  //getScene()  -взять сцену на которой нах-ся эта кнопка, получить окно, hide() - спрятать
@@ -72,6 +70,30 @@ public class AuthorizationController {
             stage.setScene(new Scene(root));
 
             stage.showAndWait(); //показать и подождать пока что-то отобразиться
+        });
+    }
+
+    private void loginClient(String login, String password) throws SQLException, ClassNotFoundException {
+        DataBase dataBase = new DataBase();
+        Client client = new Client();
+
+        client.setLogin(login);
+        client.setPassword(password);
+
+        ResultSet result = dataBase.getClient(client);
+
+        int count = 0;
+        while(result.next()){
+            count++;
+        }
+
+        if(count >= 1){
+            System.out.println("Успешно!");
+        }
+        else
+            System.out.println("Зарегистрируйтесь!");
+    }
+
 
 
 
@@ -94,8 +116,7 @@ public class AuthorizationController {
 ////
 
 
-        });
-    }
+
 
 }
 

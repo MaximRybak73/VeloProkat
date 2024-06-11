@@ -28,7 +28,20 @@ public class DataBase extends Configs {
         st.executeUpdate(); //выполнить команду
     }
 
+    public ResultSet getClient(Client client) throws SQLException, ClassNotFoundException {  //ResultSet - будет массив из всех значений клиента(имя, сери номер паспорта, адрес и тд)
 
+        ResultSet resultSet  = null;
+
+        String select = "SELECT * FROM " + Constants.CLIENTS_TABLE + " WHERE " + Constants.CLIENT_LOGIN + "=? AND " + Constants.CLIENT_PASSWORD + "=?;";
+
+        PreparedStatement st = getDbConnection().prepareStatement(select);
+        st.setString(1, client.getLogin());
+        st.setString(2, client.getPassword());
+
+        resultSet = st.executeQuery(); //получить данные из базы данных
+
+        return resultSet;
+    }
 
 
 

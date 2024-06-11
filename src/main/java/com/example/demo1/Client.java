@@ -18,6 +18,10 @@ public class Client {
         this.password = password;
     }
 
+    public Client() {
+
+    }
+
     public String getName(){
         return name;
     }
