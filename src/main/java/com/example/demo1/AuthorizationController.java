@@ -81,7 +81,7 @@ public class AuthorizationController {
         }
         else {
 //            System.out.println("Зарегистрируйтесь!");
-            Shake clientLogAnim = new Shake( loginField);
+            Shake clientLogAnim = new Shake(loginField);
             Shake clientPassAnim = new Shake(PasswordField);
             clientLogAnim.playAnim();
             clientPassAnim.playAnim();

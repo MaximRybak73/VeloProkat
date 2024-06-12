@@ -3,6 +3,8 @@ package com.example.demo1;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import Animations.Shake;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -39,12 +41,8 @@ public class SignUpController {
     @FXML
     void initialize() {
         sugnUpButton.setOnAction(event -> {
-
             signUpNewUser();
-
         });
-
-
     }
 
     private void signUpNewUser() {
@@ -57,15 +55,42 @@ public class SignUpController {
         String login = loginField.getText();
         String password = passwordField.getText();
 
-        Client client = new Client(name, series_pass, num_pass, adress, login, password);
+        if (!name.isEmpty() && !series_pass.isEmpty() && !num_pass.isEmpty() && !adress.isEmpty() && !login.isEmpty() && password.isEmpty()) {
+            Client client = new Client(name, series_pass, num_pass, adress, login, password);
 
-        try {
-            db.writeClientInDB(client);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            try {
+                db.writeClientInDB(client);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        else {
+            if (name.isEmpty()) {
+                Shake clientNameAnim = new Shake(nameField);
+                clientNameAnim.playAnim();
+            }
+            if (series_pass.isEmpty()) {
+                Shake clientSerPassAnim = new Shake(seriesPassField);
+                clientSerPassAnim.playAnim();
+            }
+            if (num_pass.isEmpty()) {
+                Shake clientNumPassAnim = new Shake(numPassField);
+                clientNumPassAnim.playAnim();
+            }
+            if (adress.isEmpty()){
+                Shake clientAdressAnim = new Shake(adressField);
+                clientAdressAnim.playAnim();
+            }
+            if (login.isEmpty()){
+                Shake clientLoginAnim = new Shake(loginField);
+                clientLoginAnim.playAnim();
+            }
+            if (password.isEmpty()){
+                Shake clientPasswordAnim = new Shake(passwordField);
+                clientPasswordAnim.playAnim();
+            }
         }
     }
-
 }
