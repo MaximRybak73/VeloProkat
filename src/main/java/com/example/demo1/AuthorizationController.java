@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
+
+import Animations.Shake;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.w3c.dom.Node;
 
 public class AuthorizationController {
 
@@ -55,21 +58,7 @@ public class AuthorizationController {
         });
 
         registrationButton.setOnAction(event -> {
-            registrationButton.getScene().getWindow().hide();  //getScene()  -взять сцену на которой нах-ся эта кнопка, получить окно, hide() - спрятать
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("signUp.fxml")); //setLocation() - указать месторасположение нужного файла
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-            Parent root = loader.getRoot();  //полный путь к файлу который необходимо загрузить
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-
-            stage.showAndWait(); //показать и подождать пока что-то отобразиться
+            openNewScene("signUp.fxml");
         });
     }
 
@@ -87,11 +76,35 @@ public class AuthorizationController {
             count++;
         }
 
-        if(count >= 1){
-            System.out.println("Успешно!");
+        if(count >= 1) {
+            openNewScene("app.fxml");
         }
-        else
-            System.out.println("Зарегистрируйтесь!");
+        else {
+//            System.out.println("Зарегистрируйтесь!");
+            Shake clientLogAnim = new Shake( loginField);
+            Shake clientPassAnim = new Shake(PasswordField);
+            clientLogAnim.playAnim();
+            clientPassAnim.playAnim();
+        }
+    }
+
+    public void openNewScene(String window){
+        registrationButton.getScene().getWindow().hide();  //getScene()  -взять сцену на которой нах-ся эта кнопка, получить окно, hide() - спрятать
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(window)); //setLocation() - указать месторасположение нужного файла
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Parent root = loader.getRoot();  //полный путь к файлу который необходимо загрузить
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+
+        stage.showAndWait(); //показать и подождать пока что-то отобразиться
+    }
     }
 
 
@@ -118,6 +131,6 @@ public class AuthorizationController {
 
 
 
-}
+
 
 
