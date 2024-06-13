@@ -43,12 +43,19 @@ public class DataBase extends Configs {
         return resultSet;
     }
 
-    public ResultSet getModels(BikeModel model) throws SQLException, ClassNotFoundException {
+    public ResultSet getModels() throws SQLException, ClassNotFoundException {
         ResultSet resultSet = null;
 
-        String select = "";
+        String select = "SELECT DISTINCT " + Constants.BIKE_MODEL_MODEL_NAME +
+                        " FROM " + Constants.BIKE_MODEL_TABLE +
+                        " JOIN " + Constants.BIKE_TABLE + " ON " + Constants.BIKE_MODEL_MODEL_NAME + " = " + Constants.BIKE_MODEL_NAME +
+                        " LEFT JOIN " + Constants.ORDERS_TABLE + " ON " + Constants.BIKE_BIKE_ID + " = " + Constants.ORDERS_BIKE_ID +
+                        " WHERE " + Constants.ORDERS_BIKE_ID + " IS NULL;"
+                        ;
 
         PreparedStatement st = getDbConnection().prepareStatement(select);
+
+        resultSet = st.executeQuery(); //получить данные из базы данных
 
         return resultSet;
     }
