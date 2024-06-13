@@ -36,12 +36,15 @@ public class AuthorizationController {
 
     @FXML
     private Button registrationButton;
+    public static String login;
+    public static String password;
 
     @FXML
     void initialize() {
         enterButton.setOnAction(event -> {
-            String login = loginField.getText().trim();
-            String password = PasswordField.getText().trim();
+            login = loginField.getText().trim();
+            password = PasswordField.getText().trim();
+
 
             if (!login.equals("") && !password.equals("")) {
                 try {
@@ -51,8 +54,7 @@ public class AuthorizationController {
                 } catch (ClassNotFoundException e) {
                     throw new RuntimeException(e);
                 }
-            }
-            else {
+            } else {
                 System.out.println("Login/password is empty");
             }
         });
@@ -72,14 +74,13 @@ public class AuthorizationController {
         ResultSet result = dataBase.getClient(client);
 
         int count = 0;
-        while(result.next()){
+        while (result.next()) {
             count++;
         }
 
-        if(count >= 1) {
+        if (count >= 1) {
             openNewScene("app.fxml");
-        }
-        else {
+        } else {
 //            System.out.println("Зарегистрируйтесь!");
             Shake clientLogAnim = new Shake(loginField);
             Shake clientPassAnim = new Shake(PasswordField);
@@ -88,7 +89,7 @@ public class AuthorizationController {
         }
     }
 
-    public void openNewScene(String window){
+    public void openNewScene(String window) {
         registrationButton.getScene().getWindow().hide();  //getScene()  -взять сцену на которой нах-ся эта кнопка, получить окно, hide() - спрятать
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(window)); //setLocation() - указать месторасположение нужного файла
@@ -105,7 +106,11 @@ public class AuthorizationController {
 
         stage.showAndWait(); //показать и подождать пока что-то отобразиться
     }
-    }
+
+
+
+
+}
 
 
 

@@ -1,6 +1,9 @@
 package com.example.demo1;
 
 import java.sql.*;
+
+import static com.example.demo1.AppController.model;
+
 public class DataBase extends Configs {
     Connection dbConnection;
 
@@ -32,7 +35,7 @@ public class DataBase extends Configs {
 
         ResultSet resultSet = null;
 
-        String select = "SELECT * FROM " + Constants.CLIENTS_TABLE + " WHERE " + Constants.CLIENT_LOGIN + "=? AND " + Constants.CLIENT_PASSWORD + "=?;";
+        String select = "SELECT " + Constants.CLIENT_ID + " FROM " + Constants.CLIENTS_TABLE + " WHERE " + Constants.CLIENT_LOGIN + "=? AND " + Constants.CLIENT_PASSWORD + "=?;";
 
         PreparedStatement st = getDbConnection().prepareStatement(select);
         st.setString(1, client.getLogin());
@@ -57,6 +60,32 @@ public class DataBase extends Configs {
 
         resultSet = st.executeQuery(); //получить данные из базы данных
 
+        return resultSet;
+    }
+
+    public ResultSet getShops() throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = null;
+
+        String select = "SELECT " + Constants.SHOP_SHOP_NAME + " FROM " + Constants.SHOP_TABLE + " ;";
+
+        PreparedStatement st = getDbConnection().prepareStatement(select);
+
+        resultSet = st.executeQuery(); //получить данные из базы данных
+
+        return resultSet;
+    }
+
+    public ResultSet getFreeBike(String selectedModel) throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = null;
+
+        String select = "SELECT " + Constants.BIKE_BIKE_ID + " FROM " + Constants.BIKE_TABLE +
+                        " LEFT JOIN " + Constants.ORDERS_TABLE + " ON " + Constants.BIKE_BIKE_ID + " = " + Constants.ORDERS_BIKE_ID +
+                        " WHERE " + Constants.BIKE_MODEL_NAME + " = ?" +
+                        " AND " + Constants.ORDERS_BIKE_ID + " IS NULL " +
+                        "LIMIT 1;";
+        PreparedStatement st = getDbConnection().prepareStatement(select);
+        st.setString(1, model);
+        resultSet = st.executeQuery();
         return resultSet;
     }
 

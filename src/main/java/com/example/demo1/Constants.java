@@ -28,6 +28,11 @@ public class Constants {
     public static final String BIKE_ORDER_ID = "order_id";
 
 
+    public static final String SHOP_TABLE = "shop";
+    public static final String SHOP_SHOP_NAME = "shop_name";
+    public static final String SHOP_SHOP_ADRESS = "shop_adress";
+
+
 
 
 }

@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-public class AppController {
+public class AppController{
 
     @FXML
     private ResourceBundle resources;
@@ -33,12 +33,14 @@ public class AppController {
     private TextField returnDateField;
 
     @FXML
-    private ComboBox<?> shopSpis;
+    private ComboBox<String> shopSpis;
+    public static String model;
 
     @FXML
     void initialize() {
-        DataBase dataBase = new DataBase();
+
         modelSpis.setOnShowing(event -> {
+            DataBase dataBase = new DataBase();
             try {
                 populateModelSpis(dataBase);
             } catch (SQLException e) {
@@ -48,6 +50,50 @@ public class AppController {
             }
 
 
+        });
+
+        shopSpis.setOnShowing(event -> {
+            DataBase db = new DataBase();
+            try {
+                populateShopSpis(db);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
+
+        });
+
+        orderButton.setOnAction(event -> {
+            DataBase db = new DataBase();
+
+            Client client = new Client();
+            client.setLogin(AuthorizationController.login);
+            client.setPassword(AuthorizationController.password);
+
+            try {
+                String selectedModel = modelSpis.getSelectionModel().getSelectedItem();
+                String selectedShop = shopSpis.getSelectionModel().getSelectedItem();
+
+                ResultSet freeBikeResultSet = db.getFreeBike(selectedModel);
+                if (freeBikeResultSet.next()) {
+                    String bike_id = freeBikeResultSet.getString(Constants.BIKE_BIKE_ID);
+
+                    ResultSet clientResultSet = db.getClient(client);
+                    if (clientResultSet.next()) {
+                        String client_id = clientResultSet.getString(Constants.CLIENT_ID);
+
+                        String give_date = giveDateField.getText();
+                        String return_date = returnDateField.getText();
+
+                        Order order = new Order(client_id, bike_id, selectedShop, give_date, return_date);
+//                        db.writeOrderInDB(order);
+                    }
+                }
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
         });
 
 
@@ -63,5 +109,17 @@ public class AppController {
 
         modelSpis.setItems(models);
     }
+
+    private void populateShopSpis(DataBase dataBase) throws SQLException, ClassNotFoundException {
+        ResultSet result = dataBase.getShops();
+        ObservableList<String> shops = FXCollections.observableArrayList();
+        while (result.next()){
+            shops.add(result.getString(Constants.SHOP_SHOP_NAME));
+        }
+
+        shopSpis.setItems(shops);
+    }
+
+
 
 }
