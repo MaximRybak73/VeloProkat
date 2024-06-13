@@ -11,5 +11,16 @@ public class Constants {
     public static final String CLIENT_PASSWORD = "password";
 
 
+    public static final String ORDERS_TABLE = "orders";
+    public static final String ORDERS_CLIENT_ID = "client_id";
+    public static final String ORDERS_BIKE_ID = "bike_id";
+    public static final String ORDERS_SHOP_NAME = "shop_name";
+    public static final String ORDERS_GIVE_DATE = "give_date";
+    public static final String ORDERS_RETURN_DATE = "orders";
+
+    
+
+
+
 
 }

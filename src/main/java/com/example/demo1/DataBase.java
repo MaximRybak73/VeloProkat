@@ -10,12 +10,12 @@ public class DataBase extends Configs {
         Class.forName("com.mysql.jdbc.Driver");
         dbConnection = DriverManager.getConnection(connection, dbUser, dbPass);
 
-        return  dbConnection;
+        return dbConnection;
     }
 
     public void writeClientInDB(Client client) throws SQLException, ClassNotFoundException { //Добавление клиента в базу данных
         String insert = "INSERT INTO " + Constants.CLIENTS_TABLE + "(" + Constants.CLIENT_NAME + "," + Constants.CLIENT_SER_PASS + "," + Constants.CLIENT_NUM_PASS + ","
-                + Constants.CLIENT_ADRESS+ "," + Constants.CLIENT_LOGIN + "," + Constants.CLIENT_PASSWORD + ")" + "VALUES(?, ?, ?, ?, ?, ?)";
+                + Constants.CLIENT_ADRESS + "," + Constants.CLIENT_LOGIN + "," + Constants.CLIENT_PASSWORD + ")" + "VALUES(?, ?, ?, ?, ?, ?)";
         PreparedStatement st = getDbConnection().prepareStatement(insert);
         st.setString(1, client.getName());
         st.setString(2, client.getSeries_pass());
@@ -30,7 +30,7 @@ public class DataBase extends Configs {
 
     public ResultSet getClient(Client client) throws SQLException, ClassNotFoundException {  //ResultSet - будет массив из всех значений клиента(имя, сери номер паспорта, адрес и тд)
 
-        ResultSet resultSet  = null;
+        ResultSet resultSet = null;
 
         String select = "SELECT * FROM " + Constants.CLIENTS_TABLE + " WHERE " + Constants.CLIENT_LOGIN + "=? AND " + Constants.CLIENT_PASSWORD + "=?;";
 
@@ -42,6 +42,20 @@ public class DataBase extends Configs {
 
         return resultSet;
     }
+
+    public ResultSet getModels(BikeModel model) throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = null;
+
+        String select = "";
+
+        PreparedStatement st = getDbConnection().prepareStatement(select);
+
+        return resultSet;
+    }
+
+
+}
+
 
 
 
@@ -105,5 +119,5 @@ public class DataBase extends Configs {
 //
 //        st.executeUpdate();
 //    }
-}
+
 
