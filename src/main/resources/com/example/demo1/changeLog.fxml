@@ -40,6 +40,27 @@
                     </textFill>
                 </Button>
             <TextField fx:id="newLogField" layoutX="207.0" layoutY="91.0" onAction="#initialize" prefHeight="25.0" prefWidth="267.0" promptText="Логин" />
+            <Button fx:id="exitButton" layoutX="27.0" layoutY="246.0" mnemonicParsing="false" onAction="#initialize" prefHeight="31.0" prefWidth="101.0" text="Назад">
+               <font>
+                  <Font name="Century Gothic Bold" size="15.0" />
+               </font>
+               <textFill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.0036549707874655724" green="0.37037035822868347" blue="0.7894737124443054" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+            </Button>
             </children>
         </AnchorPane>
         <Label layoutX="207.0" layoutY="27.0" text="VeloProkat73" textFill="WHITE">

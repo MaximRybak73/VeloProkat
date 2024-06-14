@@ -19,6 +19,9 @@ public class ChangeLogController extends AuthorizationController{
     private TextField newLogField;
 
     @FXML
+    private Button exitButton;
+
+    @FXML
     private Button okLogButton;
 
     @FXML
@@ -35,6 +38,11 @@ public class ChangeLogController extends AuthorizationController{
             }
             openNewScene("authorization.fxml", okLogButton);
         });
+
+        exitButton.setOnAction(event -> {
+            openNewScene("app.fxml", exitButton);
+        });
+
 
     }
 

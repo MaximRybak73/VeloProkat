@@ -22,6 +22,9 @@ public class ChangePassController extends AuthorizationController{
     private Button okPassButton;
 
     @FXML
+    private Button exitButton;
+
+    @FXML
     void initialize() {
         okPassButton.setOnAction(event -> {
             DataBase dataBase = new DataBase();
@@ -34,6 +37,10 @@ public class ChangePassController extends AuthorizationController{
                 throw new RuntimeException(e);
             }
             openNewScene("authorization.fxml", okPassButton);
+        });
+
+        exitButton.setOnAction(event -> {
+            openNewScene("app.fxml", exitButton);
         });
 
 

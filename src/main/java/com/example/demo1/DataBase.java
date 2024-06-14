@@ -141,6 +141,19 @@ public class DataBase extends Configs {
         st.setString(2, password);
         st.executeUpdate();
     }
+
+    public boolean isAdmin(String login) throws SQLException, ClassNotFoundException {
+        boolean isAdmin = false;
+        String select = "SELECT " + Constants.CLIENT_IS_ADMIN + " FROM " + Constants.CLIENTS_TABLE +
+                        " WHERE " + Constants.CLIENT_LOGIN + " =?";
+        PreparedStatement st = getDbConnection().prepareStatement(select);
+        st.setString(1, login);
+        ResultSet resultSet = st.executeQuery();
+        if(resultSet.next()){
+            isAdmin = resultSet.getBoolean("is_admin");
+        }
+        return isAdmin;
+    }
 }
 
 

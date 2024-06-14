@@ -88,10 +88,15 @@ public class AuthorizationController {
             count++;
         }
 
+        if(dataBase.isAdmin(login)){
+            openNewScene("adminWindow.fxml", enterButton);
+            return;
+        }
+
         if (count >= 1) {
             openNewScene("app.fxml", enterButton);
         } else {
-//            System.out.println("Зарегистрируйтесь!");
+
             Shake clientLogAnim = new Shake(loginField);
             Shake clientPassAnim = new Shake(PasswordField);
             clientLogAnim.playAnim();
