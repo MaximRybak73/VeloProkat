@@ -49,5 +49,15 @@
                 <Font name="Bauhaus 93" size="48.0" />
             </font>
         </Label>
+      <Button fx:id="changeLogButton" layoutX="505.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="181.0" text="Изменить логин">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="changePassButton" layoutX="505.0" layoutY="54.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="181.0" text="Изменить пароль">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

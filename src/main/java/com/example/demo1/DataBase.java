@@ -2,8 +2,6 @@ package com.example.demo1;
 
 import java.sql.*;
 
-import static com.example.demo1.AppController.model;
-
 public class DataBase extends Configs {
     public static DataBase instance; //единственный экземпляр класса
     Connection dbConnection;

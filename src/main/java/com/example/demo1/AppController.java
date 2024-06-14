@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-public class AppController{
+public class AppController extends  AuthorizationController{
 
     @FXML
     private ResourceBundle resources;
@@ -22,6 +22,10 @@ public class AppController{
 
     @FXML
     private TextField giveDateField;
+
+
+    @FXML
+    private Button changeInfoButton;
 
     @FXML
     private ComboBox<String> modelSpis;
@@ -37,6 +41,10 @@ public class AppController{
 
     @FXML
     void initialize() {
+
+        changeInfoButton.setOnAction(event -> {
+            openNewScene("changeLog.fxml", changeInfoButton);
+        });
 
         modelSpis.setOnShowing(event -> {
             DataBase dataBase = new DataBase();

@@ -49,9 +49,9 @@
                 <Font name="Bauhaus 93" size="48.0" />
             </font>
         </Label>
-        <Button fx:id="registrationButton" layoutX="564.0" layoutY="38.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="122.0" text="Регистрация">
+        <Button fx:id="registrationButton" layoutX="505.0" layoutY="39.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="181.0" text="Регистрация">
             <font>
-                <Font name="Century Gothic Bold" size="15.0" />
+                <Font size="14.0" />
             </font>
             <textFill>
                 <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">

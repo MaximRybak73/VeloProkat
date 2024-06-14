@@ -25,6 +25,9 @@ public class AuthorizationController {
     @FXML
     private URL location;
 
+//    @FXML
+//    private Button changeInfoButton;
+
     @FXML
     private TextField PasswordField;
 
@@ -60,8 +63,12 @@ public class AuthorizationController {
         });
 
         registrationButton.setOnAction(event -> {
-            openNewScene("signUp.fxml");
+            openNewScene("signUp.fxml", registrationButton);
         });
+
+//        changeInfoButton.setOnAction(event -> {
+//            openNewScene("changeInfo.fxml", changeInfoButton);
+//        });
     }
 
     private void loginClient(String login, String password) throws SQLException, ClassNotFoundException {
@@ -79,7 +86,7 @@ public class AuthorizationController {
         }
 
         if (count >= 1) {
-            openNewScene("app.fxml");
+            openNewScene("app.fxml", enterButton);
         } else {
 //            System.out.println("Зарегистрируйтесь!");
             Shake clientLogAnim = new Shake(loginField);
@@ -89,8 +96,8 @@ public class AuthorizationController {
         }
     }
 
-    public void openNewScene(String window) {
-        registrationButton.getScene().getWindow().hide();  //getScene()  -взять сцену на которой нах-ся эта кнопка, получить окно, hide() - спрятать
+    public void openNewScene(String window, Button button) {
+        button.getScene().getWindow().hide();  //getScene()  -взять сцену на которой нах-ся эта кнопка, получить окно, hide() - спрятать
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(window)); //setLocation() - указать месторасположение нужного файла
 
@@ -106,10 +113,6 @@ public class AuthorizationController {
 
         stage.showAndWait(); //показать и подождать пока что-то отобразиться
     }
-
-
-
-
 }
 
 
