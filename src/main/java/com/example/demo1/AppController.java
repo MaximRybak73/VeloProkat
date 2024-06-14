@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-public class AppController extends  AuthorizationController{
+public class AppController extends AuthorizationController{
 
     @FXML
     private ResourceBundle resources;
@@ -23,9 +23,11 @@ public class AppController extends  AuthorizationController{
     @FXML
     private TextField giveDateField;
 
+    @FXML
+    private Button changeLogButton;
 
     @FXML
-    private Button changeInfoButton;
+    private Button changePassButton;
 
     @FXML
     private ComboBox<String> modelSpis;
@@ -42,8 +44,12 @@ public class AppController extends  AuthorizationController{
     @FXML
     void initialize() {
 
-        changeInfoButton.setOnAction(event -> {
-            openNewScene("changeLog.fxml", changeInfoButton);
+        changeLogButton.setOnAction(event -> {
+            openNewScene("changeLog.fxml", changeLogButton);
+        });
+
+        changePassButton.setOnAction(event -> {
+            openNewScene("changePassword.fxml", changePassButton);
         });
 
         modelSpis.setOnShowing(event -> {
@@ -96,6 +102,8 @@ public class AppController extends  AuthorizationController{
 
                         Order order = new Order(client_id, bike_id, selectedShop, give_date, return_date);
                         db.writeOrderInDB(order);
+
+                        openNewScene("afterOrder.fxml", orderButton);
                     }
                 }
             } catch (SQLException | ClassNotFoundException e) {

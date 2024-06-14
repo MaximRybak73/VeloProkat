@@ -1,12 +1,13 @@
 package com.example.demo1;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class ChangePassController {
+public class ChangePassController extends AuthorizationController{
 
     @FXML
     private ResourceBundle resources;
@@ -18,12 +19,23 @@ public class ChangePassController {
     private TextField newPassField;
 
     @FXML
-    private Button passOkButton;
+    private Button okPassButton;
 
     @FXML
     void initialize() {
-        assert newPassField != null : "fx:id=\"newPassField\" was not injected: check your FXML file 'changePassword.fxml'.";
-        assert passOkButton != null : "fx:id=\"passOkButton\" was not injected: check your FXML file 'changePassword.fxml'.";
+        okPassButton.setOnAction(event -> {
+            DataBase dataBase = new DataBase();
+            String newPass = newPassField.getText();
+            try {
+                dataBase.updateClientPassword(AuthorizationController.login, newPass);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+            openNewScene("authorization.fxml", okPassButton);
+        });
+
 
     }
 

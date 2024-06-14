@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class SignUpController {
+public class SignUpController extends  AuthorizationController{
 
     @FXML
     private ResourceBundle resources;
@@ -42,6 +42,7 @@ public class SignUpController {
     void initialize() {
         sugnUpButton.setOnAction(event -> {
             signUpNewUser();
+            openNewScene("authorization.fxml", sugnUpButton);
         });
     }
 

@@ -123,6 +123,24 @@ public class DataBase extends Configs {
         st.setString(5, order.getReturn_date());
         st.executeUpdate();
     }
+
+    public void updateClientPassword(String login, String newPassword) throws SQLException, ClassNotFoundException {
+        String update = "UPDATE " + Constants.CLIENTS_TABLE +
+                        " SET " + Constants.CLIENT_PASSWORD + " = ? WHERE " + Constants.CLIENT_LOGIN + " = ?";
+        PreparedStatement st = getDbConnection().prepareStatement(update);
+        st.setString(1, newPassword);
+        st.setString(2, login);
+        st.executeUpdate();
+    }
+
+    public void updateClientLogin(String newlogin, String password) throws SQLException, ClassNotFoundException {
+        String update = "UPDATE " + Constants.CLIENTS_TABLE +
+                " SET " + Constants.CLIENT_LOGIN + " = ? WHERE " + Constants.CLIENT_PASSWORD + " = ?";
+        PreparedStatement st = getDbConnection().prepareStatement(update);
+        st.setString(1, newlogin);
+        st.setString(2, password);
+        st.executeUpdate();
+    }
 }
 
 

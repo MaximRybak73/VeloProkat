@@ -15,7 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.w3c.dom.Node;
+
 
 public class AuthorizationController {
 
@@ -42,8 +42,11 @@ public class AuthorizationController {
     public static String login;
     public static String password;
 
+
+
     @FXML
     void initialize() {
+
         enterButton.setOnAction(event -> {
             login = loginField.getText().trim();
             password = PasswordField.getText().trim();
@@ -111,7 +114,7 @@ public class AuthorizationController {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
 
-        stage.showAndWait(); //показать и подождать пока что-то отобразиться
+        stage.show(); //показать и подождать пока что-то отобразиться
     }
 }
 
