@@ -15,7 +15,7 @@ public class MyApplication extends Application {
         stage.setTitle("VeloProkat73");
         stage.setScene(scene);
         stage.show();
-        DataBase db = new DataBase();
+
 //        db.test();
 
     }

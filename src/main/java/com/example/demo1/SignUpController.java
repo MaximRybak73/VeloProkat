@@ -55,7 +55,7 @@ public class SignUpController {
         String login = loginField.getText();
         String password = passwordField.getText();
 
-        if (!name.isEmpty() && !series_pass.isEmpty() && !num_pass.isEmpty() && !adress.isEmpty() && !login.isEmpty() && password.isEmpty()) {
+        if (!name.isEmpty() && !series_pass.isEmpty() && !num_pass.isEmpty() && !adress.isEmpty() && !login.isEmpty() && !password.isEmpty()) {
             Client client = new Client(name, series_pass, num_pass, adress, login, password);
 
             try {

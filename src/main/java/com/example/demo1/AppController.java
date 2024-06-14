@@ -34,7 +34,6 @@ public class AppController{
 
     @FXML
     private ComboBox<String> shopSpis;
-    public static String model;
 
     @FXML
     void initialize() {
@@ -88,7 +87,7 @@ public class AppController{
                         String return_date = returnDateField.getText();
 
                         Order order = new Order(client_id, bike_id, selectedShop, give_date, return_date);
-//                        db.writeOrderInDB(order);
+                        db.writeOrderInDB(order);
                     }
                 }
             } catch (SQLException | ClassNotFoundException e) {

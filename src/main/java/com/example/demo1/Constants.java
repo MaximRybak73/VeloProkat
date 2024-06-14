@@ -12,19 +12,19 @@ public class Constants {
 
     public static final String ORDERS_TABLE = "orders";
     public static final String ORDERS_CLIENT_ID = "client_id";
-    public static final String ORDERS_BIKE_ID = "orders.bike_id";
+    public static final String ORDERS_BIKE_ID = "bike_id";
     public static final String ORDERS_SHOP_NAME = "shop_name";
     public static final String ORDERS_GIVE_DATE = "give_date";
-    public static final String ORDERS_RETURN_DATE = "orders";
+    public static final String ORDERS_RETURN_DATE = "return_date";
 
     public static final String BIKE_MODEL_TABLE = "bike_model";
-    public static final String BIKE_MODEL_MODEL_NAME = "bike_model.model_name";
+    public static final String BIKE_MODEL_MODEL_NAME = "model_name";
     public static final String BIKE_MODEL_TYPE = "type";
     public static final String BIKE_MODEL_COUNT_GEAR = "count_gear";
 
     public static final String BIKE_TABLE = "bike";
-    public static final String BIKE_BIKE_ID = "bike.bike_id";
-    public static final String BIKE_MODEL_NAME = "bike.model_name";
+    public static final String BIKE_BIKE_ID = "bike_id";
+    public static final String BIKE_MODEL_NAME = "model_name";
     public static final String BIKE_ORDER_ID = "order_id";
 
 
