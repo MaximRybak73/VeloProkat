@@ -1,21 +1,20 @@
 package com.example.demo1;
 
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import Animations.Shake;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class SignUpController extends  AuthorizationController{
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
+    private Label label;
 
     @FXML
     private TextField adressField;
@@ -39,14 +38,27 @@ public class SignUpController extends  AuthorizationController{
     private Button sugnUpButton;
 
     @FXML
+    private Button exitButton;
+
+    @FXML
     void initialize() {
+        exitButton.setOnAction(event -> {
+            openNewScene("authorization.fxml", exitButton);
+        });
+
         sugnUpButton.setOnAction(event -> {
-            signUpNewUser();
-            openNewScene("authorization.fxml", sugnUpButton);
+            try {
+                signUpNewUser();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+//            openNewScene("authorization.fxml", sugnUpButton);
         });
     }
 
-    private void signUpNewUser() {
+    private void signUpNewUser() throws SQLException, ClassNotFoundException {
         DataBase db = new DataBase();
 
         String name = nameField.getText();
@@ -57,14 +69,27 @@ public class SignUpController extends  AuthorizationController{
         String password = passwordField.getText();
 
         if (!name.isEmpty() && !series_pass.isEmpty() && !num_pass.isEmpty() && !adress.isEmpty() && !login.isEmpty() && !password.isEmpty()) {
-            Client client = new Client(name, series_pass, num_pass, adress, login, password);
+            ResultSet result = db.isBusyLogin(login);
 
-            try {
-                db.writeClientInDB(client);
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
+            int count = 0;
+            while (result.next()) {
+                count++;
+            }
+            if (count == 0) {
+                Client client = new Client(name, series_pass, num_pass, adress, login, password);
+
+                try {
+                    db.writeClientInDB(client);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+
+                openNewScene("authorization.fxml", sugnUpButton);
+            }
+            else {
+                label.setText("Пользователь с данным логином уже существует!");
             }
         }
         else {

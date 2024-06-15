@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.AppController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.AppController">
     <children>
         <AnchorPane layoutY="94.0" prefHeight="306.0" prefWidth="700.0" style="-fx-background-color: #fafafa;">
          <children>
@@ -42,6 +42,8 @@
             <Button fx:id="orderButton" layoutX="295.0" layoutY="248.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="110.0" text="Забронировать" />
             <ComboBox fx:id="modelSpis" layoutX="424.0" layoutY="106.0" prefWidth="150.0" />
             <ComboBox fx:id="shopSpis" layoutX="424.0" layoutY="141.0" prefWidth="150.0" />
+            <Button fx:id="exitButton" layoutX="23.0" layoutY="248.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="Назад" />
+            <Button fx:id="aboutModelsButton" layoutX="588.0" layoutY="106.0" mnemonicParsing="false" text="?" />
          </children>
         </AnchorPane>
         <Label layoutX="207.0" layoutY="27.0" text="VeloProkat73" textFill="WHITE">

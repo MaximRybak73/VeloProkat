@@ -36,6 +36,13 @@ public class AppController extends AuthorizationController{
     private Button orderButton;
 
     @FXML
+    private Button exitButton;
+
+
+    @FXML
+    private Button aboutModelsButton;
+
+    @FXML
     private TextField returnDateField;
 
     @FXML
@@ -43,6 +50,13 @@ public class AppController extends AuthorizationController{
 
     @FXML
     void initialize() {
+        aboutModelsButton.setOnAction(event -> {
+            openNewScene("aboutModels.fxml", aboutModelsButton);
+        });
+
+        exitButton.setOnAction(event -> {
+            openNewScene("authorization.fxml", exitButton);
+        });
 
         changeLogButton.setOnAction(event -> {
             openNewScene("changeLog.fxml", changeLogButton);

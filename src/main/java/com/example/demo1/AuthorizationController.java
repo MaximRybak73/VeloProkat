@@ -20,15 +20,6 @@ import javafx.stage.Stage;
 public class AuthorizationController {
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-//    @FXML
-//    private Button changeInfoButton;
-
-    @FXML
     private TextField PasswordField;
 
     @FXML

@@ -12,6 +12,7 @@ public class Constants {
     public static final String CLIENT_IS_ADMIN = "is_admin";
 
 
+
     public static final String ORDERS_TABLE = "orders";
     public static final String ORDERS_CLIENT_ID = "client_id";
     public static final String ORDERS_BIKE_ID = "bike_id";
