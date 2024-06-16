@@ -18,6 +18,14 @@ public class Client {
         this.password = password;
     }
 
+    public Client(String name, String series_pass, String num_pass, String adress){
+        this.name = name;
+        this.series_pass = series_pass;
+        this.num_pass = num_pass;
+        this.adress = adress;
+    }
+
+
     public Client() {
 
     }

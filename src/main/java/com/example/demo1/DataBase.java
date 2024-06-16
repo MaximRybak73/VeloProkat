@@ -199,6 +199,47 @@ public class DataBase extends Configs {
         st.setString(1, order_id);
         st.executeUpdate();
     }
+
+    public Client getClientByOrderId(String order_id) throws SQLException, ClassNotFoundException {
+        Client client = null;
+        String select = "SELECT " + Constants.CLIENT_NAME + ", " + Constants.CLIENT_SER_PASS + ", " + Constants.CLIENT_NUM_PASS + Constants.CLIENT_ADRESS +
+                        " FROM " + Constants.CLIENTS_TABLE +
+                        " JOIN " + Constants.ORDERS_TABLE + " ON " + Constants.CLIENTS_TABLE + "." + Constants.CLIENT_ID + " = " + Constants.ORDERS_TABLE + "." + Constants.ORDERS_CLIENT_ID +
+                        " WHERE " + Constants.ORDERS_TABLE + "." + Constants.ORDERS_ORDER_ID + " = ?;";
+
+        PreparedStatement st = getDbConnection().prepareStatement(select);
+        st.setString(1, order_id);
+        ResultSet resultSet = st.executeQuery(); //получить данные из базы данных
+
+        if(resultSet.next()){
+            String name = resultSet.getString("name");
+            String ser_pass = resultSet.getString("series_pass");
+            String num_pass = resultSet.getString("num_pass");
+            String adress = resultSet.getString("client_adress");
+
+            client = new Client(name, ser_pass, num_pass, adress);
+        }
+
+        return client;
+    }
+
+    public String getModelByOrderId(String order_id) throws SQLException, ClassNotFoundException {
+        String model = null;
+        String select = "SELECT " + Constants.BIKE_MODEL_TABLE + "." + Constants.BIKE_MODEL_MODEL_NAME +
+                        " FROM " + Constants.BIKE_MODEL_TABLE +
+                        " JOIN " + Constants.BIKE_TABLE + " ON " + Constants.BIKE_MODEL_TABLE + "." + Constants.BIKE_MODEL_MODEL_NAME + " = " + Constants.BIKE_TABLE + "." + Constants.BIKE_MODEL_NAME +
+                        " JOIN " + Constants.ORDERS_TABLE + " ON " + Constants.BIKE_TABLE + "." + Constants.BIKE_BIKE_ID + " = " + Constants.ORDERS_TABLE + "." + Constants.ORDERS_BIKE_ID +
+                        " WHERE " + Constants.ORDERS_TABLE + "." + Constants.ORDERS_ORDER_ID + " = ?;";
+
+        PreparedStatement st = getDbConnection().prepareStatement(select);
+        st.setString(1, order_id);
+        ResultSet resultSet = st.executeQuery(); //получить данные из базы данных
+
+        if (resultSet.next()){
+            model = resultSet.getString("model_name");
+        }
+        return model;
+    }
 }
 
 

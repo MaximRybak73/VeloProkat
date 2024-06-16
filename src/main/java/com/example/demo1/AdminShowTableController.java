@@ -1,12 +1,13 @@
 package com.example.demo1;
 
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class AdminShowTableController extends AuthorizationController {
@@ -27,6 +28,9 @@ public class AdminShowTableController extends AuthorizationController {
     private Button loadTableButton;
 
     @FXML
+    private Button aboutOrderButton;
+
+    @FXML
     private Button exitButton;
 
     @FXML
@@ -38,19 +42,31 @@ public class AdminShowTableController extends AuthorizationController {
     @FXML
     private TableColumn<Order, String> shop_nameColumn;
 
+
+    @FXML
+    private TextField orderIdAbout_Field;
+
     @FXML
     public TableView<Order> tableView;
 
     @FXML
     void initialize() {
+        AtomicInteger countr = new AtomicInteger();
         deleteOrderButton.setOnAction(event -> {
             openNewScene("deleteOrderAdmin.fxml", deleteOrderButton);
+            countr.set(0);
+        });
+
+        aboutOrderButton.setOnAction(event -> {
+            openNewScene("aboutOrderAdmin.fxml", aboutOrderButton);
         });
 
         loadTableButton.setOnAction(event -> {
             DataBase db = new DataBase();
             try {
+                if(countr.get() == 0)
                 db.loadOrdersFromDB(tableView);
+                countr.set(1);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             } catch (ClassNotFoundException e) {
