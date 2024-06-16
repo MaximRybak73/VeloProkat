@@ -16,9 +16,6 @@ public class MyApplication extends Application {
         stage.setTitle("VeloProkat73");
         stage.setScene(scene);
         stage.show();
-
-//        db.test();
-
     }
 
     public static void main(String[] args) {

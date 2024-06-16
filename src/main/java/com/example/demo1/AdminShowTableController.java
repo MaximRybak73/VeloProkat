@@ -49,6 +49,8 @@ public class AdminShowTableController extends AuthorizationController {
     @FXML
     public TableView<Order> tableView;
 
+    public static String order_id;
+
     @FXML
     void initialize() {
         AtomicInteger countr = new AtomicInteger();
@@ -58,6 +60,7 @@ public class AdminShowTableController extends AuthorizationController {
         });
 
         aboutOrderButton.setOnAction(event -> {
+            order_id = orderIdAbout_Field.getText();
             openNewScene("aboutOrderAdmin.fxml", aboutOrderButton);
         });
 

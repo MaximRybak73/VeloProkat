@@ -202,7 +202,7 @@ public class DataBase extends Configs {
 
     public Client getClientByOrderId(String order_id) throws SQLException, ClassNotFoundException {
         Client client = null;
-        String select = "SELECT " + Constants.CLIENT_NAME + ", " + Constants.CLIENT_SER_PASS + ", " + Constants.CLIENT_NUM_PASS + Constants.CLIENT_ADRESS +
+        String select = "SELECT " + Constants.CLIENT_NAME + ", " + Constants.CLIENT_SER_PASS + ", " + Constants.CLIENT_NUM_PASS + ", " + Constants.CLIENT_ADRESS +
                         " FROM " + Constants.CLIENTS_TABLE +
                         " JOIN " + Constants.ORDERS_TABLE + " ON " + Constants.CLIENTS_TABLE + "." + Constants.CLIENT_ID + " = " + Constants.ORDERS_TABLE + "." + Constants.ORDERS_CLIENT_ID +
                         " WHERE " + Constants.ORDERS_TABLE + "." + Constants.ORDERS_ORDER_ID + " = ?;";

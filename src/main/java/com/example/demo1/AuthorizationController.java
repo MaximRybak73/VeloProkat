@@ -36,7 +36,7 @@ public class AuthorizationController {
 
 
     @FXML
-    void initialize() {
+    void initialize() throws SQLException, ClassNotFoundException {
 
         enterButton.setOnAction(event -> {
             login = loginField.getText().trim();
