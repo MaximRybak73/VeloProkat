@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class AppController extends AuthorizationController{
@@ -44,6 +45,9 @@ public class AppController extends AuthorizationController{
 
     @FXML
     private TextField returnDateField;
+
+    @FXML
+    private Label label;
 
     @FXML
     private ComboBox<String> shopSpis;
@@ -114,10 +118,16 @@ public class AppController extends AuthorizationController{
                         String give_date = giveDateField.getText();
                         String return_date = returnDateField.getText();
 
-                        Order order = new Order(client_id, bike_id, selectedShop, give_date, return_date);
-                        db.writeOrderInDB(order);
+                        if (!give_date.isEmpty() && !return_date.isEmpty() && selectedModel != null && selectedShop != null) {
 
-                        openNewScene("afterOrder.fxml", orderButton);
+                            Order order = new Order(client_id, bike_id, selectedShop, give_date, return_date);
+                            db.writeOrderInDB(order);
+
+                            openNewScene("afterOrder.fxml", orderButton);
+                        }
+                        else{
+                            label.setText("Заполните все поля!");
+                        }
                     }
                 }
             } catch (SQLException | ClassNotFoundException e) {

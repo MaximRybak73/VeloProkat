@@ -1,5 +1,8 @@
 package com.example.demo1;
 
+import javafx.scene.control.TableView;
+
+
 import java.sql.*;
 
 public class DataBase extends Configs {
@@ -168,7 +171,33 @@ public class DataBase extends Configs {
         resultSet = st.executeQuery(); //получить данные из базы данных
 
         return resultSet;
+    }
 
+    public void loadOrdersFromDB(TableView<Order> ordersTable) throws SQLException, ClassNotFoundException {
+        String select = "SELECT * FROM orders";
+        PreparedStatement st = getDbConnection().prepareStatement(select);
+
+        ResultSet resultSet = st.executeQuery();
+
+        while (resultSet.next()){
+            String order_id = resultSet.getString("order_id");
+            String client_id = resultSet.getString("client_id");
+            String bike_id = resultSet.getString("bike_id");
+            String shop_name = resultSet.getString("shop_name");
+            String give_date = resultSet.getString("give_date");
+            String return_date = resultSet.getString("return_date");
+
+            Order order = new Order(order_id, client_id, bike_id, shop_name, give_date, return_date);
+            ordersTable.getItems().add(order);
+        }
+    }
+
+    public void deleteCurrentOrder(String order_id) throws SQLException, ClassNotFoundException {
+        String select = "DELETE FROM " + Constants.ORDERS_TABLE +
+                " WHERE " + Constants.ORDERS_ORDER_ID + " = ?;";
+        PreparedStatement st = getDbConnection().prepareStatement(select);
+        st.setString(1, order_id);
+        st.executeUpdate();
     }
 }
 
