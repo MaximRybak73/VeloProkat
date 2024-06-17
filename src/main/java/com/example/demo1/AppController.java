@@ -46,6 +46,9 @@ public class AppController extends Helper{
     @FXML
     private ComboBox<String> shopSpis;
 
+    private String model_name;
+    private String shop_name;
+
     @FXML
     void initialize() {
         aboutModelsButton.setOnAction(event -> {
@@ -98,10 +101,9 @@ public class AppController extends Helper{
             client.setPassword(AuthorizationController.password);
 
             try {
-                String selectedModel = modelSpis.getSelectionModel().getSelectedItem();
-                String selectedShop = shopSpis.getSelectionModel().getSelectedItem();
 
-                ResultSet freeBikeResultSet = db.getFreeBike(selectedModel);
+
+                ResultSet freeBikeResultSet = db.getFreeBike(model_name);
                 if (freeBikeResultSet.next()) {
                     String bike_id = freeBikeResultSet.getString(Constants.BIKE_BIKE_ID);
 
@@ -112,9 +114,9 @@ public class AppController extends Helper{
                         String give_date = giveDateField.getText();
                         String return_date = returnDateField.getText();
 
-                        if (!give_date.isEmpty() && !return_date.isEmpty() && selectedModel != null && selectedShop != null) {
+                        if (!give_date.isEmpty() && !return_date.isEmpty() && model_name != null && shop_name != null) {
 
-                            Order order = new Order(client_id, bike_id, selectedShop, give_date, return_date);
+                            Order order = new Order(client_id, bike_id, shop_name, give_date, return_date);
                             db.writeOrderInDB(order);
 
                             openNewScene("afterOrder.fxml", orderButton);
@@ -137,7 +139,12 @@ public class AppController extends Helper{
         ResultSet result = dataBase.getModels();
         ObservableList<String> models = FXCollections.observableArrayList();
         while (result.next()){
-            models.add(result.getString(Constants.BIKE_MODEL_MODEL_NAME));
+            model_name = result.getString(Constants.BIKE_MODEL_MODEL_NAME);
+            String model_type = result.getString(Constants.BIKE_MODEL_TYPE);
+            String model_count_gear = result.getString(Constants.BIKE_MODEL_COUNT_GEAR);
+
+            String str = model_name + ", Тип: " + model_type + ", " + model_count_gear + " передач";
+            models.add(str);
         }
 
         modelSpis.setItems(models);
@@ -147,7 +154,11 @@ public class AppController extends Helper{
         ResultSet result = dataBase.getShops();
         ObservableList<String> shops = FXCollections.observableArrayList();
         while (result.next()){
-            shops.add(result.getString(Constants.SHOP_SHOP_NAME));
+            shop_name = result.getString(Constants.SHOP_SHOP_NAME);
+            String shop_adress = result.getString(Constants.SHOP_SHOP_ADRESS);
+
+            String str = "'" + shop_name +"', " + shop_adress;
+            shops.add(str);
         }
 
         shopSpis.setItems(shops);

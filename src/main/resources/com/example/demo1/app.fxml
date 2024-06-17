@@ -40,10 +40,10 @@
             </Text>
             <TextField fx:id="returnDateField" layoutX="424.0" layoutY="76.0" prefHeight="25.0" prefWidth="110.0" />
             <Button fx:id="orderButton" layoutX="295.0" layoutY="248.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="110.0" text="Забронировать" />
-            <ComboBox fx:id="modelSpis" layoutX="424.0" layoutY="106.0" prefWidth="150.0" />
-            <ComboBox fx:id="shopSpis" layoutX="424.0" layoutY="141.0" prefWidth="150.0" />
+            <ComboBox fx:id="modelSpis" layoutX="424.0" layoutY="106.0" prefHeight="25.0" prefWidth="271.0" />
+            <ComboBox fx:id="shopSpis" layoutX="424.0" layoutY="141.0" prefHeight="25.0" prefWidth="271.0" />
             <Button fx:id="exitButton" layoutX="23.0" layoutY="248.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="71.0" text="Назад" />
-            <Button fx:id="aboutModelsButton" layoutX="588.0" layoutY="106.0" mnemonicParsing="false" text="?" />
+            <Button fx:id="aboutModelsButton" layoutX="394.0" layoutY="106.0" mnemonicParsing="false" text="?" />
             <Label fx:id="label" layoutX="266.0" layoutY="193.0" prefHeight="31.0" prefWidth="168.0" textFill="RED">
                <font>
                   <Font name="System Bold Italic" size="15.0" />

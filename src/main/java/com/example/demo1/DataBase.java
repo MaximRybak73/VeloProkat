@@ -75,7 +75,7 @@ public class DataBase extends Configs {
     public ResultSet getModels() throws SQLException, ClassNotFoundException {
         ResultSet resultSet = null;
 
-        String select = "SELECT DISTINCT " + "bike_model." + Constants.BIKE_MODEL_MODEL_NAME +
+        String select = "SELECT DISTINCT " + "bike_model." + Constants.BIKE_MODEL_MODEL_NAME + ", " + Constants.BIKE_MODEL_TABLE + "." + Constants.BIKE_MODEL_TYPE + ", " +Constants.BIKE_MODEL_TABLE + "." + Constants.BIKE_MODEL_COUNT_GEAR +
                         " FROM " + Constants.BIKE_MODEL_TABLE +
                         " JOIN " + Constants.BIKE_TABLE + " ON bike_model." + Constants.BIKE_MODEL_MODEL_NAME + " = " + "bike." + Constants.BIKE_MODEL_NAME +
                         " LEFT JOIN " + Constants.ORDERS_TABLE + " ON bike." + Constants.BIKE_BIKE_ID + " = " + "orders." + Constants.ORDERS_BIKE_ID +
@@ -92,7 +92,8 @@ public class DataBase extends Configs {
     public ResultSet getShops() throws SQLException, ClassNotFoundException {
         ResultSet resultSet = null;
 
-        String select = "SELECT " + Constants.SHOP_SHOP_NAME + " FROM " + Constants.SHOP_TABLE + " ;";
+        String select = "SELECT " + Constants.SHOP_SHOP_NAME + ", " + Constants.SHOP_SHOP_ADRESS +
+                        " FROM " + Constants.SHOP_TABLE + " ;";
 
         PreparedStatement st = getDbConnection().prepareStatement(select);
 

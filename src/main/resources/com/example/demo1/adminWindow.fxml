@@ -14,7 +14,6 @@
         <AnchorPane layoutY="94.0" prefHeight="306.0" prefWidth="700.0" style="-fx-background-color: #fafafa;">
             <children>
             <Button fx:id="deleteOrderButton" layoutX="15.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="Удалить заказ" />
-            <Button fx:id="loadTableButton" layoutX="14.0" layoutY="28.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="Загрузить данные" />
             <TableView fx:id="tableView" layoutX="168.0" layoutY="5.0" prefHeight="297.0" prefWidth="510.0">
               <columns>
                 <TableColumn fx:id="order_idColumn" prefWidth="75.0" text="order_id" />
