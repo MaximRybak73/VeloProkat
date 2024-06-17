@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class AfterOrderController extends AuthorizationController{
+public class AfterOrderController extends Helper{
 
     @FXML
     private ResourceBundle resources;

@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class DeleteOrderController extends AuthorizationController{
+public class DeleteOrderController extends Helper{
 
     @FXML
     private Button deleteButton;

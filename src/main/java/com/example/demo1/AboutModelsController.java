@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class AboutModelsController extends AuthorizationController{
+public class AboutModelsController extends Helper{
 
     @FXML
     private Button exitButton;

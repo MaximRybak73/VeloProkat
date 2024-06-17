@@ -11,7 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class SignUpController extends  AuthorizationController{
+public class SignUpController extends  Helper{
 
     @FXML
     private Label label;

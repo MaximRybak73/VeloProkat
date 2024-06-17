@@ -11,8 +11,6 @@ public class Constants {
     public static final String CLIENT_PASSWORD = "password";
     public static final String CLIENT_IS_ADMIN = "is_admin";
 
-
-
     public static final String ORDERS_TABLE = "orders";
     public static final String ORDERS_ORDER_ID = "order_id";
     public static final String ORDERS_CLIENT_ID = "client_id";
@@ -29,8 +27,6 @@ public class Constants {
     public static final String BIKE_TABLE = "bike";
     public static final String BIKE_BIKE_ID = "bike_id";
     public static final String BIKE_MODEL_NAME = "model_name";
-    public static final String BIKE_ORDER_ID = "order_id";
-
 
     public static final String SHOP_TABLE = "shop";
     public static final String SHOP_SHOP_NAME = "shop_name";

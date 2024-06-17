@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class AboutOrderAdminController extends  AuthorizationController{
+public class AboutOrderAdminController extends  Helper{
 
     @FXML
     private TextField adressClientField;

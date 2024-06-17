@@ -10,7 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class AdminShowTableController extends AuthorizationController {
+public class AdminShowTableController extends Helper {
 
     @FXML
     private TableColumn<Order, String> bike_idColumn;

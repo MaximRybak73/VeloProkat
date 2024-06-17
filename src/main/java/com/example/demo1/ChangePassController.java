@@ -7,13 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class ChangePassController extends AuthorizationController{
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
+public class ChangePassController extends Helper{
 
     @FXML
     private TextField newPassField;

@@ -13,13 +13,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class AppController extends AuthorizationController{
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
+public class AppController extends Helper{
 
     @FXML
     private TextField giveDateField;
