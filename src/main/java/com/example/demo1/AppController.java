@@ -3,6 +3,8 @@ package com.example.demo1;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -44,6 +46,9 @@ public class AppController extends Helper{
     private Label label;
 
     @FXML
+    private Label labelIncorrectDate;
+
+    @FXML
     private ComboBox<String> shopSpis;
 
     private String model_name;
@@ -51,6 +56,7 @@ public class AppController extends Helper{
 
     @FXML
     void initialize() {
+        DataBase dataBase = new DataBase();
         aboutModelsButton.setOnAction(event -> {
             openNewScene("aboutModels.fxml", aboutModelsButton);
         });
@@ -68,7 +74,6 @@ public class AppController extends Helper{
         });
 
         modelSpis.setOnShowing(event -> {
-            DataBase dataBase = new DataBase();
             try {
                 populateModelSpis(dataBase);
             } catch (SQLException e) {
@@ -76,14 +81,11 @@ public class AppController extends Helper{
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
-
-
         });
 
         shopSpis.setOnShowing(event -> {
-            DataBase db = new DataBase();
             try {
-                populateShopSpis(db);
+                populateShopSpis(dataBase);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             } catch (ClassNotFoundException e) {
@@ -94,20 +96,16 @@ public class AppController extends Helper{
         });
 
         orderButton.setOnAction(event -> {
-            DataBase db = new DataBase();
-
             Client client = new Client();
             client.setLogin(AuthorizationController.login);
             client.setPassword(AuthorizationController.password);
 
             try {
-
-
-                ResultSet freeBikeResultSet = db.getFreeBike(model_name);
+                ResultSet freeBikeResultSet = dataBase.getFreeBike(model_name);
                 if (freeBikeResultSet.next()) {
                     String bike_id = freeBikeResultSet.getString(Constants.BIKE_BIKE_ID);
 
-                    ResultSet clientResultSet = db.getClient(client);
+                    ResultSet clientResultSet = dataBase.getClient(client);
                     if (clientResultSet.next()) {
                         String client_id = clientResultSet.getString(Constants.CLIENT_ID);
 
@@ -115,9 +113,17 @@ public class AppController extends Helper{
                         String return_date = returnDateField.getText();
 
                         if (!give_date.isEmpty() && !return_date.isEmpty() && model_name != null && shop_name != null) {
+                            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+                            LocalDate giveDate = LocalDate.parse(give_date, format);
+                            LocalDate returnDate = LocalDate.parse(return_date, format);
+                            LocalDate currentDate = LocalDate.now();
+                            if(giveDate.isBefore(currentDate) || returnDate.isBefore(currentDate)){
+                                labelIncorrectDate.setText("Укажите корректные даты!");
+                                return;
+                            }
 
                             Order order = new Order(client_id, bike_id, shop_name, give_date, return_date);
-                            db.writeOrderInDB(order);
+                            dataBase.writeOrderInDB(order);
 
                             openNewScene("afterOrder.fxml", orderButton);
                         }
@@ -130,9 +136,6 @@ public class AppController extends Helper{
                 throw new RuntimeException(e);
             }
         });
-
-
-
     }
 
     private void populateModelSpis(DataBase dataBase) throws SQLException, ClassNotFoundException {
@@ -146,7 +149,6 @@ public class AppController extends Helper{
             String str = model_name + ", Тип: " + model_type + ", " + model_count_gear + " передач";
             models.add(str);
         }
-
         modelSpis.setItems(models);
     }
 
@@ -160,10 +162,6 @@ public class AppController extends Helper{
             String str = "'" + shop_name +"', " + shop_adress;
             shops.add(str);
         }
-
         shopSpis.setItems(shops);
     }
-
-
-
 }

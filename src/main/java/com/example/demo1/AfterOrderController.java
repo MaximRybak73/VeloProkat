@@ -8,12 +8,6 @@ import javafx.scene.control.Button;
 public class AfterOrderController extends Helper{
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
     private Button exitButton;
 
     @FXML

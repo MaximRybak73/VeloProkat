@@ -37,39 +37,19 @@ public class Order {
         return client_id;
     }
 
-    public void setClient_id(String client_id) {
-        this.client_id = client_id;
-    }
-
     public String getBike_id() {
         return bike_id;
-    }
-
-    public void setBike_id(String bike_id) {
-        this.bike_id = bike_id;
     }
 
     public String getShop_name() {
         return shop_name;
     }
 
-    public void setShop_name(String shop_name) {
-        this.shop_name = shop_name;
-    }
-
     public String getGive_date() {
         return give_date;
     }
 
-    public void setGive_date(String give_date) {
-        this.give_date = give_date;
-    }
-
     public String getReturn_date() {
         return return_date;
-    }
-
-    public void setReturn_date(String return_date) {
-        this.return_date = return_date;
     }
 }

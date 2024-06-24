@@ -49,6 +49,11 @@
                   <Font name="System Bold Italic" size="15.0" />
                </font>
             </Label>
+            <Label fx:id="labelIncorrectDate" layoutX="242.0" layoutY="224.0" textFill="RED">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Label>
          </children>
         </AnchorPane>
         <Label layoutX="207.0" layoutY="27.0" text="VeloProkat73" textFill="WHITE">

@@ -11,18 +11,8 @@ public class Bike {
 
     public int getId() {
         return id;
-    }
-
-    public String getModel_name() {
-        return model_name;
-    }
-
-
+    };
     public void setId(int id) {
         this.id = id;
-    }
-
-    public void setModel_name(String model_name) {
-        this.model_name = model_name;
     }
 }

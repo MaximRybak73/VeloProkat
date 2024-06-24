@@ -61,6 +61,11 @@
                   </RadialGradient>
                </textFill>
             </Button>
+            <Label fx:id="label" layoutX="164.0" layoutY="125.0" textFill="RED">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
         <Label layoutX="207.0" layoutY="27.0" text="VeloProkat73" textFill="WHITE">

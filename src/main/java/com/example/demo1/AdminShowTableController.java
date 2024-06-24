@@ -39,7 +39,6 @@ public class AdminShowTableController extends Helper {
     @FXML
     private TableColumn<Order, String> shop_nameColumn;
 
-
     @FXML
     private TextField orderIdAbout_Field;
 
@@ -83,7 +82,5 @@ public class AdminShowTableController extends Helper {
         exitButton.setOnAction(event -> {
             openNewScene("authorization.fxml", exitButton);
         });
-
-
     }
 }

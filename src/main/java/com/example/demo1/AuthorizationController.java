@@ -1,21 +1,10 @@
 package com.example.demo1;
-
-import java.io.IOException;
-import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Objects;
-import java.util.ResourceBundle;
-
 import Animations.Shake;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
 
 public class AuthorizationController extends Helper{
 
@@ -32,8 +21,6 @@ public class AuthorizationController extends Helper{
     private Button registrationButton;
     public static String login;
     public static String password;
-
-
 
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {
@@ -59,10 +46,6 @@ public class AuthorizationController extends Helper{
         registrationButton.setOnAction(event -> {
             openNewScene("signUp.fxml", registrationButton);
         });
-
-//        changeInfoButton.setOnAction(event -> {
-//            openNewScene("changeInfo.fxml", changeInfoButton);
-//        });
     }
 
     private void loginClient(String login, String password) throws SQLException, ClassNotFoundException {
@@ -95,29 +78,6 @@ public class AuthorizationController extends Helper{
         }
     }
 }
-
-
-
-
-
-
-
-//            Parent root = null;
-//            try {
-//                root = (Parent) FXMLLoader.load((URL) Objects.requireNonNull(this.getClass().getResource("signUp.fxml")));
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-////            Scene scene = new Scene(root);
-////            stage.setScene(scene);
-////            stage.show();
-//
-//            Stage stage = new Stage();
-//            stage.setScene(new Scene(root));
-//            stage.showAndWait(); //показать и подождать пока что-то отобразиться
-////
-
-
 
 
 

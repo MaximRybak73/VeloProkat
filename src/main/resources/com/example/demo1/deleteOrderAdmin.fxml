@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.DeleteOrderController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.DeleteOrderController">
     <children>
         <AnchorPane layoutY="94.0" prefHeight="306.0" prefWidth="700.0" style="-fx-background-color: #fafafa;">
             <children>
@@ -62,6 +62,11 @@
                   </RadialGradient>
                </textFill>
             </Button>
+            <Label fx:id="errorLabel" layoutX="277.0" layoutY="141.0" prefHeight="25.0" prefWidth="158.0" textFill="RED">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
         <Label layoutX="207.0" layoutY="27.0" text="VeloProkat73" textFill="WHITE">

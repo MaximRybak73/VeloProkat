@@ -1,8 +1,5 @@
 package com.example.demo1;
-
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -20,8 +17,9 @@ public class ChangePassController extends Helper{
 
     @FXML
     void initialize() {
+        DataBase dataBase = new DataBase();
+
         okPassButton.setOnAction(event -> {
-            DataBase dataBase = new DataBase();
             String newPass = newPassField.getText();
             try {
                 dataBase.updateClientPassword(AuthorizationController.login, newPass);
@@ -36,8 +34,5 @@ public class ChangePassController extends Helper{
         exitButton.setOnAction(event -> {
             openNewScene("app.fxml", exitButton);
         });
-
-
     }
-
 }

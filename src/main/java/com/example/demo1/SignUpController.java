@@ -1,10 +1,6 @@
 package com.example.demo1;
-
-import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
-
 import Animations.Shake;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -39,7 +35,7 @@ public class SignUpController extends  Helper{
 
     @FXML
     private Button exitButton;
-
+    DataBase db = new DataBase();
     @FXML
     void initialize() {
         exitButton.setOnAction(event -> {
@@ -54,12 +50,11 @@ public class SignUpController extends  Helper{
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
-//            openNewScene("authorization.fxml", sugnUpButton);
         });
     }
 
     private void signUpNewUser() throws SQLException, ClassNotFoundException {
-        DataBase db = new DataBase();
+
 
         String name = nameField.getText();
         String series_pass = seriesPassField.getText();

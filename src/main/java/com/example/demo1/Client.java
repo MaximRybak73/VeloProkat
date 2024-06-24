@@ -5,7 +5,6 @@ public class Client {
     private String series_pass;
     private String num_pass;
     private String adress;
-
     private String login;
     private String password;
 
@@ -34,32 +33,16 @@ public class Client {
         return name;
     }
 
-    public void setName(){
-        this.name = name;
-    }
-
     public String getSeries_pass(){
         return series_pass;
-    }
-
-    public void setSeries_pass(){
-        this.series_pass = series_pass;
     }
 
     public String getNum_pass(){
         return num_pass;
     }
 
-    public void setNum_pass(){
-        this.num_pass = num_pass;
-    }
-
     public String getAdress(){
         return adress;
-    }
-
-    public void setAdress(){
-        this.adress = adress;
     }
 
     public String getLogin() {
